@@ -1,0 +1,2 @@
+This is the text.
+System call "read" should read this text.
