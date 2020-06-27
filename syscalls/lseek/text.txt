@@ -1,0 +1,4 @@
+It is the text file.
+This file intended for demo-work with "lseek" syscall
+File position will be randomly changed.
+That's all.
