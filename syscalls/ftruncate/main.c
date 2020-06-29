@@ -7,34 +7,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define FLAGS O_RDWR
+#include "truncreader.h"
+
 #define FILENAME "lorem_ipsum"
-
-int fileopen(const char * name){
-	int fd;
-	if((fd = open(name, FLAGS)) == -1){
-		perror("open");
-		exit(EXIT_FAILURE);
-	} 
-	return fd;
-}
-
-void fileread(int fd, off_t trunc_len){
-
-	if (ftruncate(fd, trunc_len) == -1) {
-		perror("truncate");
-		exit(EXIT_FAILURE);
-	}
-
-	char buf[trunc_len];
-	
-	if (read(fd, buf, trunc_len) == -1){
-		perror("read");
-		exit(EXIT_FAILURE);
-	}
-
-	printf("truncated to %ld length:\n%s\n", trunc_len, buf);
-}
 
 int main(){
 
@@ -46,7 +21,6 @@ int main(){
 		lseek(fd, 0, SEEK_SET);
 		fileread(fd, (off_t) trunc[i]);
 	}
-
 
 	return 0;
 }
