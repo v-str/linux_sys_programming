@@ -1,2 +1,2 @@
 default:
-	gcc -g main.c -o app
+	gcc -g wmain.c -o wapp
