@@ -1,0 +1,3 @@
+Hello, this is new programm for writev syscall.
+This is very usefull syscall.
+It can write all buffer by one command.
