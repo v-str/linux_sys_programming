@@ -33,9 +33,19 @@ int main() {
 
 	void * ptr = mmap(NULL, stbuf.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
 
+	if ( ptr == MAP_FAILED ){
+		perror("mmap");
+		return 1;
+	}
+
 	close(fd);
 
 	printf("your mmap:\n%s", (char*)ptr);
+
+	if ( munmap (ptr, stbuf.st_size) == -1 ){
+		perror("munmap");
+		return 1;
+	}
 
 	return 0;
 }
